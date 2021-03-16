@@ -6,23 +6,23 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class API {
+public final class API {
 
-    JavaPlugin jplugin;
+    static JavaPlugin jplugin;
 
-    public String msg(String msg) {
+    public static String msg(String msg) {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
-    public void addCmd(String cmd, CommandExecutor executor) {
+    public static void addCmd(String cmd, CommandExecutor executor) {
         jplugin.getCommand(cmd).setExecutor(executor);
     }
 
-    public void addTab(String cmd, TabCompleter completer) {
+    public static void addTab(String cmd, TabCompleter completer) {
         jplugin.getCommand(cmd).setTabCompleter(completer);
     }
 
-    public void registerEvents(Listener listener) {
+    public static void registerEvents(Listener listener) {
         jplugin.getServer().getPluginManager().registerEvents(listener, jplugin);
     }
 }
